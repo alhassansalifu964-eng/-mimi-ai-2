@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIMI AI - Your Smart Assistant</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+background:#080b14;color:white;
+font-family:Arial,sans-serif;
+min-height:100vh;
+}
+header{
+padding:20px;
+border-bottom:1px solid #20283a;
+display:flex;justify-content:space-between;
+align-items:center;
+}
+.logo{font-size:27px;font-weight:bold;color:#9b7cff}
+.logo span{color:#36d9ff}
+main{max-width:850px;margin:auto;padding:35px 18px}
+h1{font-size:38px;text-align:center;margin:50px 0 12px}
+.subtitle{text-align:center;color:#929bad;margin-bottom:35px}
+.tools{display:flex;gap:12px;justify-content:center;margin-bottom:25px;flex-wrap:wrap}
+.tool{
+background:#151b2b;border:1px solid #303a52;
+padding:13px 20px;border-radius:12px;color:white;
+}
+.chat{
+background:#111827;border:1px solid #27334b;
+border-radius:18px;padding:18px;min-height:280px;
+}
+#messages{min-height:220px;line-height:1.7}
+.message{padding:12px;margin:8px 0;border-radius:12px;white-space:pre-wrap}
+.user{background:#252b43;text-align:right}
+.bot{background:#19243a}
+.input-area{display:flex;gap:10px;margin-top:15px}
+input{
+flex:1;min-width:0;background:#080e1b;
+border:1px solid #39445d;border-radius:12px;
+padding:15px;color:white;font-size:16px;
+}
+button{
+background:#8060f5;border:0;color:white;
+padding:14px 19px;border-radius:12px;
+font-weight:bold;cursor:pointer;
+}
+button:hover{background:#6847db}
+footer{text-align:center;color:#778198;padding:30px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">MIMI<span> AI</span></div>
+<div>✦ Your AI Assistant</div>
+</header>
+
+<main>
+<h1>Meet MIMI AI ✨</h1>
+<p class="subtitle">Ask anything. Explore ideas. Create something amazing.</p>
+
+<div class="tools">
+<div class="tool">💬 AI Chat</div>
+<div class="tool">🎨 Image Generator</div>
+<div class="tool">⚡ Smart Assistant</div>
+</div>
+
+<div class="chat">
+<div id="messages">
+<div class="message bot">
+Hello! I'm MIMI AI. 👋
+How can I help you today?
+</div>
+</div>
+
+<div class="input-area">
+<input id="question" placeholder="Ask MIMI anything...">
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
+</main>
+
+<footer>© 2026 MIMI AI. All rights reserved.</footer>
+
+<script>
+function sendMessage(){
+const input=document.getElementById("question");
+const messages=document.getElementById("messages");
+const text=input.value.trim();
+if(!text)return;
+
+const user=document.createElement("div");
+user.className="message user";
+user.textContent=text;
+messages.appendChild(user);
+input.value="";
+
+const reply=document.createElement("div");
+reply.className="message bot";
+reply.textContent="Welcome to MIMI AI! The AI engine will be connected soon.";
+messages.appendChild(reply);
+messages.scrollTop=messages.scrollHeight;
+}
+document.getElementById("question").addEventListener("keydown",e=>{
+if(e.key==="Enter")sendMessage();
+});
+</script>
+</body>
+</html>
